@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  database:
+    build: src/main/resources/mysql
+    image: baboons/cloudbaboobs:latest
+    container_name: cloudbaboobs
+    # publish port to integration tests running in an IDE
+    ports:
+      - "12005:3306"

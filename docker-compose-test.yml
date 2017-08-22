@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  database:
+    build: src/main/resources/postgres
+    image: baboons/clooudbaboons:latest
+    container_name: clooudbaboons-postgres
+    ports:
+      - "12009:5432"
