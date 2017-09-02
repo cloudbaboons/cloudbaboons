@@ -3,7 +3,7 @@ Bootstrap tweaks
 ===============================================================*/
 
 body, h1, h2, h3, h4 {
-    font-weight: 100;
+    font-weight: 300;
 }
 
 /* ==========================================================================
@@ -60,7 +60,7 @@ Generic styles
 }
 
 .readonly {
-    background-color: #dddee;
+    background-color: #eee;
     opacity: 1;
 }
 

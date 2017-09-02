@@ -33,6 +33,17 @@
     "nativeLanguage": "en",
     "languages": [
       "en"
-    ]
+    ],
+    "appsFolders": [
+      "baboons"
+    ],
+    "directoryPath": "../",
+    "monitoring": "no",
+    "jwtSecretKey": "cd4ce2aab503efb82aed7f48d9728313fa50fb88",
+    "dockerRepositoryName": "baboons",
+    "dockerPushCommand": "docker push",
+    "openshiftNamespace": "default",
+    "storageType": "persistent",
+    "registryReplicas": 2
   }
 }

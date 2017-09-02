@@ -26,9 +26,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:12009/postgres
+        url: jdbc:postgresql://localhost:5432/cloudbaboons
         username: cloudbaboons
-        password: cloudbaboons
+        password:
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -94,7 +94,7 @@ jhipster:
             key: 50922ee675efc13b11150904cdde6fc012f8516e
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: cloudbaboons@localhost
-        base-url: http://127.0.0.1:8080
+        base-url: http://127.0.0.1:8089
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
