@@ -1,0 +1,5 @@
+package-name = com.test
+package-folder = com/test
+server-port = 8189
+database-type = postgresql
+application-prefix = cb
