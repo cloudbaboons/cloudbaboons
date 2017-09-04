@@ -123,5 +123,7 @@ jhipster:
 # More documentation is available at:
 # https://jhipster.github.io/common-application-properties/
 # ===================================================================
-
+config:
+  root: /apps/kapil/baboons/
+  
 application:
