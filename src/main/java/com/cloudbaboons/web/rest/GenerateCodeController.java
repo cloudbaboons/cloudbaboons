@@ -19,14 +19,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class GenerateCodeController {
 
-    private final Logger log = LoggerFactory.getLogger(GenerateCodeController.class);
+    private static final String SPACE = " ";
+	private final Logger log = LoggerFactory.getLogger(GenerateCodeController.class);
 
     @GetMapping("/generate")
-    public ResponseEntity<String> getCurrentSessions() {
+    public ResponseEntity<String> generate(String appName,String packageName,String packageFolder,String portNum,
+    		String databaseType, String appPrefix) {
     	String response = new String("Generated");
     	
+    	String scriptPath = "/apps/kapil/baboons/generate.sh";
+   
+    
+    StringBuilder builder = new StringBuilder();
+    	
     	 try {
-             String target = new String("/apps/kapil/baboons/generate.sh test-app2  com.test  com/test   8189   postgresql  cb");
+			builder.append(scriptPath).append(SPACE).append(appName).append(SPACE).append(packageName).append(SPACE)
+					.append(packageFolder).append(SPACE).append(portNum).append(SPACE).append(databaseType)
+					.append(SPACE).append(appPrefix);
+			
+		    String target = builder.toString();//new String("/apps/kapil/baboons/generate.sh test-app2  com.test  com/test   8189   postgresql  cb");
 
              Runtime rt = Runtime.getRuntime();
              Process proc = rt.exec(target);

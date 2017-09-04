@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="cloudbaboonsApp.genapp.home.title">Genapps</span>
+        <button class="btn btn-primary float-right create-genapp" [routerLink]="['/', { outlets: { popup: ['genapp-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cloudbaboonsApp.genapp.home.createLabel">
+            Create new Genapp
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="genapps">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.application_name">Application Name</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.package_name">Package Name</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.package_folder">Package Folder</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.server_port">Server Port</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.database_type">Database Type</span></th>
+            <th><span jhiTranslate="cloudbaboonsApp.genapp.application_prefix">Application Prefix</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let genapp of genapps ;trackBy: trackId">
+                <td><a [routerLink]="['../genapp', genapp.id ]">{{genapp.id}}</a></td>
+                <td>{{genapp.application_name}}</td>
+                <td>{{genapp.package_name}}</td>
+                <td>{{genapp.package_folder}}</td>
+                <td>{{genapp.server_port}}</td>
+                <td>{{genapp.database_type}}</td>
+                <td>{{genapp.application_prefix}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../genapp', genapp.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'genapp/'+ genapp.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'genapp/'+ genapp.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

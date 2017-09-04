@@ -1,0 +1,26 @@
+{
+    "cloudbaboonsApp": {
+        "genapp" : {
+            "home": {
+                "title": "Genapps",
+                "createLabel": "Create a new Genapp",
+                "createOrEditLabel": "Create or edit a Genapp"
+            },
+            "created": "A new Genapp is created with identifier {{ param }}",
+            "updated": "A Genapp is updated with identifier {{ param }}",
+            "deleted": "A Genapp is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Genapp {{ id }}?"
+            },
+            "detail": {
+                "title": "Genapp"
+            },
+            "application_name": "Application Name",
+            "package_name": "Package Name",
+            "package_folder": "Package Folder",
+            "server_port": "Server Port",
+            "database_type": "Database Type",
+            "application_prefix": "Application Prefix"
+        }
+    }
+}

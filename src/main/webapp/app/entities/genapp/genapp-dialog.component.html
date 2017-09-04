@@ -1,0 +1,61 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myGenappLabel" jhiTranslate="cloudbaboonsApp.genapp.home.createOrEditLabel">Create or edit a Genapp</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!genapp.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="genapp.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.application_name" for="field_application_name">Application Name</label>
+            <input type="text" class="form-control" name="application_name" id="field_application_name"
+                [(ngModel)]="genapp.application_name"  />
+            example : test-app    
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.package_name" for="field_package_name">Package Name</label>
+            <input type="text" class="form-control" name="package_name" id="field_package_name"
+                [(ngModel)]="genapp.package_name"  />
+            example : org.test       
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.package_folder" for="field_package_folder">Package Folder</label>
+            <input type="text" class="form-control" name="package_folder" id="field_package_folder"
+                [(ngModel)]="genapp.package_folder"  />
+                example : org/test 
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.server_port" for="field_server_port">Server Port</label>
+            <input type="text" class="form-control" name="server_port" id="field_server_port"
+                [(ngModel)]="genapp.server_port"  />
+                example : 9091   
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.database_type" for="field_database_type">Database Type</label>
+            <input type="text" class="form-control" name="database_type" id="field_database_type"
+                [(ngModel)]="genapp.database_type"  />
+                example : postgresql, oracle , mysql  
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.genapp.application_prefix" for="field_application_prefix">Application Prefix</label>
+            <input type="text" class="form-control" name="application_prefix" id="field_application_prefix"
+                [(ngModel)]="genapp.application_prefix"  />
+                example : cb  
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

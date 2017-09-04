@@ -1,0 +1,45 @@
+
+<div *ngIf="genapp">
+    <h2><span jhiTranslate="cloudbaboonsApp.genapp.detail.title">Genapp</span> {{genapp.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.application_name">Application Name</span></dt>
+        <dd>
+            <span>{{genapp.application_name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.package_name">Package Name</span></dt>
+        <dd>
+            <span>{{genapp.package_name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.package_folder">Package Folder</span></dt>
+        <dd>
+            <span>{{genapp.package_folder}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.server_port">Server Port</span></dt>
+        <dd>
+            <span>{{genapp.server_port}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.database_type">Database Type</span></dt>
+        <dd>
+            <span>{{genapp.database_type}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.genapp.application_prefix">Application Prefix</span></dt>
+        <dd>
+            <span>{{genapp.application_prefix}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'genapp/'+ genapp.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

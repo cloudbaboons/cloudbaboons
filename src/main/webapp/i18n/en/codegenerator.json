@@ -1,0 +1,22 @@
+{
+    "cloudbaboonsApp": {
+        "codegenerator" : {
+            "home": {
+                "title": "Codegenerators",
+                "createLabel": "Create a new Codegenerator",
+                "createOrEditLabel": "Create or edit a Codegenerator"
+            },
+            "created": "A new Codegenerator is created with identifier {{ param }}",
+            "updated": "A Codegenerator is updated with identifier {{ param }}",
+            "deleted": "A Codegenerator is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Codegenerator {{ id }}?"
+            },
+            "detail": {
+                "title": "Codegenerator"
+            },
+            "application_name": "Application Name",
+            "package_name": "Package Name"
+        }
+    }
+}

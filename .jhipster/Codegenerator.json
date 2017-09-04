@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "application_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "package_name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170902213958",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "codegenerator",
+    "pagination": "no"
+}
