@@ -33,5 +33,5 @@ find . -type f -name '*.json' -exec sed -i '' s:application-prefix:$6: {} +
 jhipster --regenerate
 
 
-zip -r -X "../$1.zip" *
+zip -r --exclude=*node_modules* -X "../$1.zip" *
 

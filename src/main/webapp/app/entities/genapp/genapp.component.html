@@ -29,7 +29,7 @@
             <tbody>
             <tr *ngFor="let genapp of genapps ;trackBy: trackId">
                 <td><a [routerLink]="['../genapp', genapp.id ]">{{genapp.id}}</a></td>
-                <td>{{genapp.application_name}}</td>
+                <td>{{genapp.application_name}}  <a href="/api/download?file={{genapp.application_name}}.zip">Download</a> </td>
                 <td>{{genapp.package_name}}</td>
                 <td>{{genapp.package_folder}}</td>
                 <td>{{genapp.server_port}}</td>

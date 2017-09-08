@@ -13,6 +13,10 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -47,35 +51,69 @@ public class GenerateCodeController {
 	@Value("${config.root}")
 	private static String root;
 	
-	
+	ExecutorService executor = Executors.newFixedThreadPool(5);
+
+	public Future<String> executeAsynchronous(String filePath, String type) {
+
+		return getHandle(filePath, type);
+
+	}
+
+	private Future<String> getHandle(String filePath, String type) {
+		Future<String> future = null;
+		Task task = new Task(filePath, type);
+		future = executor.submit(task);
+
+		return future;
+
+	}
+
+	class Task implements Callable<String> {
+
+		String filePath;
+		String type;
+
+		public Task(String filePath, String type) {
+			this.filePath = filePath;
+			this.type = type;
+		}
+
+		private void call(String filePath, String type) throws Exception {
+			
+			callShellCommand(filePath);
+			// do action here
+		}
+
+		@Override
+		public String call() throws Exception {
+
+			call(this.filePath, this.type);
+
+			return null;
+		}
+	}
+
 
     @GetMapping("/generate")
     public ResponseEntity<String> generate(String appName,String packageName,String packageFolder,String portNum,
     		String databaseType, String appPrefix) {
     	String response = new String("Generated");
     	
-    	String scriptPath = root + "generate.sh";
+    	String scriptPath = "/apps/kapil/baboons/" + "generate.sh";
    
+    	String nodeCall = "node build.ts";
     
     StringBuilder builder = new StringBuilder();
     	
     	 try {
-			builder.append(scriptPath).append(SPACE).append(appName).append(SPACE).append(packageName).append(SPACE)
+			builder.append(nodeCall).append(SPACE).append(appName).append(SPACE).append(packageName).append(SPACE)
 					.append(packageFolder).append(SPACE).append(portNum).append(SPACE).append(databaseType)
 					.append(SPACE).append(appPrefix);
 			
 		    String target = builder.toString();//new String("/apps/kapil/baboons/generate.sh test-app2  com.test  com/test   8189   postgresql  cb");
 
-             Runtime rt = Runtime.getRuntime();
-             Process proc = rt.exec(target);
-             proc.waitFor();
-             StringBuffer output = new StringBuffer();
-             BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-             String line = "";                       
-             while ((line = reader.readLine())!= null) {
-                     output.append(line + "\n");
-             }
-             System.out.println("### " + output);
+		    executeAsynchronous(target, "");
+             StringBuffer output = new StringBuffer("OK");
              
              response = output.toString();
      } catch (Throwable t) {
@@ -86,11 +124,34 @@ public class GenerateCodeController {
 	                .cacheControl(CacheControl.noStore())
 	                .body(response);
     }
+
+	private StringBuffer callShellCommand(String target) throws IOException, InterruptedException {
+	
+		System.out.println("\n\n\n\n\n\n\n   START BUILDING \n\n\n\n\n");
+		
+		Runtime rt = Runtime.getRuntime();
+		 Process proc = rt.exec(target);
+		proc.waitFor();
+		
+		System.out.println("\n\n\n\n\n\n\n   Called BUILDING \n\n\n\n\n");
+
+		
+		
+		 StringBuffer output = new StringBuffer();
+		 BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+		 String line = "";                       
+		 while ((line = reader.readLine())!= null) {
+		         output.append(line + "\n");
+		}
+		 System.out.println("### " + output);
+		return output;
+		// return new StringBuffer("OK");
+	}
     
 	@RequestMapping(path = "/download", method = RequestMethod.GET)
-	public ResponseEntity<Resource> download(String param) throws IOException {
+	public ResponseEntity<Resource> download(@RequestParam(value = "file") String param) throws IOException {
 
-		  String 	FILE_PATH = "/apps/kapil/baboons" + "/data/app.zip";
+		  String 	FILE_PATH = "/apps/kapil/baboons" + "/data/"+param;
 	   
      File file = new File(FILE_PATH);
      InputStreamResource resource = new InputStreamResource(new FileInputStream(file));

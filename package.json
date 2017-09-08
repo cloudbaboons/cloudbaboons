@@ -91,6 +91,7 @@
     "node": ">=6.9.0"
   },
   "scripts": {
+    "baboon": "node build.ts",	
     "lint": "tslint 'src/main/webapp/app/**/*.ts'",
     "lint:fix": "tslint 'src/main/webapp/app/**/*.ts' --fix",
     "ngc": "ngc -p tsconfig-aot.json",
