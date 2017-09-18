@@ -1,0 +1,24 @@
+{
+    "cloudbaboonsApp": {
+        "entities" : {
+            "home": {
+                "title": "Entities",
+                "createLabel": "Create a new Entities",
+                "createOrEditLabel": "Create or edit a Entities"
+            },
+            "created": "A new Entities is created with identifier {{ param }}",
+            "updated": "A Entities is updated with identifier {{ param }}",
+            "deleted": "A Entities is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Entities {{ id }}?"
+            },
+            "detail": {
+                "title": "Entities"
+            },
+            "orgname": "Orgname",
+            "appname": "Appname",
+            "fieldname": "Fieldname",
+            "fieldtype": "Fieldtype"
+        }
+    }
+}

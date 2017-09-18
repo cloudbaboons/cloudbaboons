@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "orgname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fieldname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fieldtype",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170918053858",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "entities",
+    "pagination": "pagination"
+}

@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "giturl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gitusername",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gitpassword",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jenkinsurl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jenkinsusername",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jenkinspassword",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orgname",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170918051100",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "configurations",
+    "pagination": "pagination"
+}

@@ -9,6 +9,8 @@
                 "main": "Entities",
                 "codegenerator": "Codegenerator",
                 "genapp": "Genapp",
+                "configurations": "Configurations",
+                "entities": "Entities",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

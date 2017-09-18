@@ -5,7 +5,7 @@
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
             <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">Cloudbaboons</span> <span class="navbar-version">{{version}}</span>
+            <span class="navbar-title">Cloudbaboons</span> <span class="navbar-version">{{version}}</span>
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
@@ -38,6 +38,18 @@
                         <a class="dropdown-item" routerLink="genapp" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.genapp">Genapp</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="configurations" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.configurations">Configurations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="entities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.entities">Entities</span>
                         </a>
                     </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

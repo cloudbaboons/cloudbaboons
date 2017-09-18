@@ -1,0 +1,53 @@
+
+<div *ngIf="configurations">
+    <h2><span jhiTranslate="cloudbaboonsApp.configurations.detail.title">Configurations</span> {{configurations.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.giturl">Giturl</span></dt>
+        <dd>
+            <span>{{configurations.giturl}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.gitusername">Gitusername</span></dt>
+        <dd>
+            <span>{{configurations.gitusername}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.gitpassword">Gitpassword</span></dt>
+        <dd>
+            <span>{{configurations.gitpassword}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.jenkinsurl">Jenkinsurl</span></dt>
+        <dd>
+            <span>{{configurations.jenkinsurl}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.jenkinsusername">Jenkinsusername</span></dt>
+        <dd>
+            <span>{{configurations.jenkinsusername}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.jenkinspassword">Jenkinspassword</span></dt>
+        <dd>
+            <span>{{configurations.jenkinspassword}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.appname">Appname</span></dt>
+        <dd>
+            <span>{{configurations.appname}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.configurations.orgname">Orgname</span></dt>
+        <dd>
+            <span>{{configurations.orgname}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'configurations/'+ configurations.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

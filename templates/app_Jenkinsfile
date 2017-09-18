@@ -1,0 +1,57 @@
+node {
+
+	def emailSubject = '$$app-name$$ Build Notification' 
+	def server = Artifactory.server 'ART_JENKINS'
+	def rtMaven = Artifactory.newMavenBuild()
+	def buildInfo = Artifactory.newBuildInfo()
+	def workSpace = env.WORKSPACE
+	
+	datetag = new Date().format('yyyyMMddHHmm')
+	def tagWAR = 'WAR'
+	def tagConfig = 'CONFIG'
+	def tag_label  = "${datetag}_${branch}_${tagWAR}_${BUILD_NUMBER}"
+	def config_tag_label = "${datetag}_${branch}_${tagConfig}_${BUILD_NUMBER}"
+	println "${tag_label}"
+
+   try {
+		
+		stage('Checkout Code') {
+		  sh "rm -rf ./$$app-name$$"
+		  sh "git clone -b ${branch} http://$$git-url$$/$$app-name$$.git"
+		}
+		
+		stage ('Build Project') {
+		   mvnTool = tool 'MAVEN_3_CLOUD'
+		   sh "${mvnTool}/bin/mvn -f $$app-name$$/pom.xml clean install"
+		}
+		
+		stage('sonar analysis') {
+				withSonarQubeEnv('Sonar Server') {
+				mvnToolForSonar = tool 'MAVEN_3_CLOUD'
+				sh "'${mvnToolForSonar}/bin/mvn' -f $$app-name$$/pom.xml sonar:sonar"
+				}
+		} 
+				
+		stage('Notification') {
+			currentBuild.result = "SUCCESS"
+			mail body: "${env.JOB_NAME} project build completed successfully: \n\n ${env.BUILD_URL} \n\n\n" ,
+			from: '$$fromemailid$$',
+			replyTo: '$$fromemailid$$',
+			subject: '$$app-name$$ Build Notification SUCCESS',
+			to: '$$emailid$$'
+		}
+  }
+  catch (err) {
+        
+        String error = "${err}";
+        currentBuild.result = "FAILURE"
+
+		mail body: "${env.JOB_NAME} project build error is here: \n\n ${env.BUILD_URL} \n\n\n Error: ${error} \n\n\n" ,
+		from: '$$fromemailid$$',
+		replyTo: '$$fromemailid$$',
+		subject: '$$app-name$$ Build Notification FAILURE',
+		to: '$$emailid$$'
+
+        throw err
+    }
+}

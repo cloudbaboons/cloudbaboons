@@ -1,0 +1,28 @@
+{
+    "cloudbaboonsApp": {
+        "configurations" : {
+            "home": {
+                "title": "Configurations",
+                "createLabel": "Create a new Configurations",
+                "createOrEditLabel": "Create or edit a Configurations"
+            },
+            "created": "A new Configurations is created with identifier {{ param }}",
+            "updated": "A Configurations is updated with identifier {{ param }}",
+            "deleted": "A Configurations is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Configurations {{ id }}?"
+            },
+            "detail": {
+                "title": "Configurations"
+            },
+            "giturl": "Giturl",
+            "gitusername": "Gitusername",
+            "gitpassword": "Gitpassword",
+            "jenkinsurl": "Jenkinsurl",
+            "jenkinsusername": "Jenkinsusername",
+            "jenkinspassword": "Jenkinspassword",
+            "appname": "Appname",
+            "orgname": "Orgname"
+        }
+    }
+}

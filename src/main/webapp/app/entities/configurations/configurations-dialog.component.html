@@ -1,0 +1,65 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myConfigurationsLabel" jhiTranslate="cloudbaboonsApp.configurations.home.createOrEditLabel">Create or edit a Configurations</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!configurations.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="configurations.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.giturl" for="field_giturl">Giturl</label>
+            <input type="text" class="form-control" name="giturl" id="field_giturl"
+                [(ngModel)]="configurations.giturl"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.gitusername" for="field_gitusername">Gitusername</label>
+            <input type="text" class="form-control" name="gitusername" id="field_gitusername"
+                [(ngModel)]="configurations.gitusername"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.gitpassword" for="field_gitpassword">Gitpassword</label>
+            <input type="text" class="form-control" name="gitpassword" id="field_gitpassword"
+                [(ngModel)]="configurations.gitpassword"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.jenkinsurl" for="field_jenkinsurl">Jenkinsurl</label>
+            <input type="text" class="form-control" name="jenkinsurl" id="field_jenkinsurl"
+                [(ngModel)]="configurations.jenkinsurl"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.jenkinsusername" for="field_jenkinsusername">Jenkinsusername</label>
+            <input type="text" class="form-control" name="jenkinsusername" id="field_jenkinsusername"
+                [(ngModel)]="configurations.jenkinsusername"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.jenkinspassword" for="field_jenkinspassword">Jenkinspassword</label>
+            <input type="text" class="form-control" name="jenkinspassword" id="field_jenkinspassword"
+                [(ngModel)]="configurations.jenkinspassword"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.appname" for="field_appname">Appname</label>
+            <input type="text" class="form-control" name="appname" id="field_appname"
+                [(ngModel)]="configurations.appname"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cloudbaboonsApp.configurations.orgname" for="field_orgname">Orgname</label>
+            <input type="text" class="form-control" name="orgname" id="field_orgname"
+                [(ngModel)]="configurations.orgname"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

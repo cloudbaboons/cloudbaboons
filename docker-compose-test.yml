@@ -6,4 +6,4 @@ services:
     image: baboons/clooudbaboons:latest
     container_name: clooudbaboons-postgres
     ports:
-      - "12009:5432"
+      - "12019:5432"

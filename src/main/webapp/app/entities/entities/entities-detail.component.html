@@ -1,0 +1,37 @@
+
+<div *ngIf="entities">
+    <h2><span jhiTranslate="cloudbaboonsApp.entities.detail.title">Entities</span> {{entities.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cloudbaboonsApp.entities.orgname">Orgname</span></dt>
+        <dd>
+            <span>{{entities.orgname}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.entities.appname">Appname</span></dt>
+        <dd>
+            <span>{{entities.appname}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.entities.fieldname">Fieldname</span></dt>
+        <dd>
+            <span>{{entities.fieldname}}</span>
+        </dd>
+        <dt><span jhiTranslate="cloudbaboonsApp.entities.fieldtype">Fieldtype</span></dt>
+        <dd>
+            <span>{{entities.fieldtype}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'entities/'+ entities.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
